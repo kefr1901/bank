@@ -7,7 +7,7 @@
     fetch("http://localhost/bank/classes/api.php")
         .then(res => res.json())
         .then(data => {
-            //console.log(data.userInfo);
+            console.log(data.userInfo);
 
             // GET TO SEND PERSON
             for(let i = 0; i < data.userInfo.length; i++){
