@@ -5,7 +5,7 @@ include_once "config.php";
 
 class Transaction 
 {
-    public $db;
+    private $db;
     public $transaction_id;
     public $from_account;
 	public $to_account;
@@ -31,7 +31,14 @@ class Transaction
 	}
  
     // Skapa en transaktion POST
-    public function createTransaction() {
+    public function createTransaction($balance, $amount) {
+		
+		/// JÄMFÖR BALANSEN
+		
+			$this->checkBalance($balance, $amount);
+
+
+		
 		echo("kommer in i createTransaction");
 		//echo($this->from_account);
 		try {
@@ -58,40 +65,37 @@ class Transaction
 			
  
 		} catch (Exception $e) {
-    		die("Error!");
+    		die("Error in query!");
 		}
  
-    }
+	
+	}
+	
+	public function getBalance($from_account){
 
-    // Hämta alla  transaktioner
-    public function getAllTransactions() {
-    	try {
-    		$sql = "SELECT * FROM transaction";
-		    $stmt = $this->db->pdo->prepare($sql);
- 
-		    $stmt->execute();
-		    $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-            return $result;
-		} catch (Exception $e) {
-		    die("Error!");
+		//$sql = 'SELECT balance FROM bank.vw_users WHERE account_id = ' . $this->from_account;
+		$sql = 'SELECT balance FROM bank.vw_users WHERE account_id = ' . $from_account;
+		$stmt = $this->db->pdo->prepare($sql);
+		$stmt->execute();
+		
+		$data = $stmt->fetchAll();
+
+        echo($data[0]["balance"]);
+   		return $data[0]["balance"];
+
+	}	
+	function checkBalance($balance, $amount){
+		
+		if($balance < $amount){
+			throw new Exception("Not enough money!");
 		}
-    }
- 
-    // Hämta en specifik
-    public function getOneTransaction() {
-    	try {
-    		$sql = "SELECT * FROM student WHERE id=:transaction_id";
-		    $stmt = $this->db->pdo->prepare($sql);
-		    $data = [
-		    	'transaction_id' => $this->transaction_id
-			];
-		    $stmt->execute($data);
-		    $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-            return $result;
-		} catch (Exception $e) {
-		    die("Error");
-		}
-    }
+		return true;
+
+
+	}
+
+	
+
 
 }
  

@@ -10,7 +10,7 @@ $body_data = json_decode(file_get_contents('php://input'),true);
 
 //Skapar nytt objekt av klassen Databas
 $db = new Database();
-//skapar nytt objekt av klassen Transaction
+//skapar nytt objekt av klassen Transaction och skickar med db objektet
 $transaction = new Transaction($db);
 //skapar nytt objekt av klassen User
 $user = new User($db);
@@ -19,7 +19,7 @@ $user = new User($db);
 switch($requestMethod) {
 	case 'POST':
 		echo("kommer in i post REQ").PHP_EOL;
-		var_dump($body_data);
+		//var_dump($body_data);
 		//Data från användarinput från API 
 		$transaction_id = $body_data['transaction_id'];
 		$from_account = $body_data['from_account'];
@@ -38,8 +38,19 @@ switch($requestMethod) {
 		$transaction->setToAccount($to_account);
 		$transaction->setToAmount($to_amount);
 
-	  //Kallar på funktionen som kör scriptet 
-	  $transactionInfo = $transaction->createTransaction();
+		///////// KOLLA BALANCE //////////////
+
+		try{
+		//$transaction->getBalance($from_account);
+			if($transaction->createTransaction($transaction->getBalance($from_account), $to_amount)) {
+				echo 'Yeah';
+			}
+		}catch (Exception $e){
+			echo 'Message: ' . $e->getMessage();
+		}
+
+		
+	 
 
 		//var_dump($transactionInfo);
 
@@ -52,7 +63,9 @@ switch($requestMethod) {
 		echo $js_encode;	
 		break;
 
-		//// Hämtar alla användare från databasen 
+
+		///////////////////GET REQ HÄMTAR ALLA AVÄNDARE//////////////////////////////
+
 		case 'GET':
 
 			//Calling getAllUsers Method in User Class
@@ -60,13 +73,15 @@ switch($requestMethod) {
 			
 			//Om userifo är tom får vi tillbaka ett error annars får vi success!
 			if(!empty($userInfo)) {
-			  $js_encode = json_encode(array('status'=>TRUE, 'userInfo'=>$userInfo), true);
+				$js_encode = json_encode(array('status'=>TRUE, 'userInfo'=>$userInfo), true);
 			} else {
 				$js_encode = json_encode(array('status'=>FALSE, 'message'=>'Error, no users.'), true);
 			}
 			//header('Content-Type: application/json');
 			echo $js_encode;
-			break;
+		break;
+		
+			
 
 		}
 

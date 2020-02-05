@@ -10,16 +10,20 @@
 <h2>WELCOME TO MONEY TRANSFER!</h2>
     <form action="" method="post" id="sendMoney">
         <label>From account ID</label><br>
-        <select>
-        <option value="2" name="from_account" id="from_account">Lion</option>
-        </select>
+        <select id="from_account" required>
+
+        </select><br>
+
+        <p id="balance">
+
+
         
-        <label>To Account ID</label>
-       <select id="to_account">
+        <label>To Account ID</label><br>
+       <select id="to_account" requried>
 
        </select><br>
         <label>Pick amount to send $$</label><br>
-            <input type="number" name="to_amount" id="to_amount" min=0 placeholder="No Limit" required><br>
+            <input type="number" name="to_amount" id="to_amount" min=0 placeholder="No Limit"required ><br>
 
             <button type="submit" id="submit" name="submit">Send that money!</button>
 

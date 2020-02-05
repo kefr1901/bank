@@ -22,6 +22,7 @@ Class User{
     // Hämta alla användare och skriv ut dem
     $stmt = $this->db->pdo->prepare('SELECT * FROM vw_users');
     $stmt->execute();
+    
     $data = $stmt->fetchAll();
         
     return ($data);
