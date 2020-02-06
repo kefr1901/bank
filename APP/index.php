@@ -14,9 +14,8 @@
         <div class="information">
             <h2>WELCOME TO MONEY TRANSFER!</h2>
             <hr>
-            <div id="message">
 
-            </div>
+            
 
 
         <form action="" method="post" id="sendMoney">
@@ -37,6 +36,8 @@
             <input type="number" name="to_amount" id="to_amount" min=0 placeholder=""required ><br>
 
             <hr>
+            <div id="message">
+            </div>
             <button type="submit" id="submit" name="submit">Send money $$</button>
 
     </form>
