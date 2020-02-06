@@ -1,7 +1,7 @@
 <?php
 
-
-class Database{
+class Database
+{
     private $host    = 'localhost';
     private $port    = 3306;
     private $db      = 'bank';
@@ -25,5 +25,3 @@ class Database{
         }
     }
 }
-
-//$connection = new Database();
