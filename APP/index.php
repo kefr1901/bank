@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Bank</title>
 </head>
 <body>
-<h2>WELCOME TO MONEY TRANSFER!</h2>
+
+    
+    <div class="container">
+        <div class="information">
+            <h2>WELCOME TO MONEY TRANSFER!</h2>
+            <hr>
+
+
     <form action="" method="post" id="sendMoney">
-        <label>From account ID</label><br>
-        <select id="from_account" required>
+        <h3>From account ID</h3><br>
+        <select id="from_account"  class="select-css" required>
 
         </select><br>
 
@@ -18,16 +26,19 @@
 
 
         
-        <label>To Account ID</label><br>
-       <select id="to_account" requried>
+        <h3>To Account ID</h3><br>
+       <select id="to_account" class="select-css" requried>
 
        </select><br>
-        <label>Pick amount to send $$</label><br>
-            <input type="number" name="to_amount" id="to_amount" min=0 placeholder="No Limit"required ><br>
+        <h3>Pick amount to send $$</h3><br>
+            <input type="number" name="to_amount" id="to_amount" min=0 placeholder=""required ><br>
 
-            <button type="submit" id="submit" name="submit">Send that money!</button>
+            <hr>
+            <button type="submit" id="submit" name="submit">Send money $$</button>
 
-</form>
+    </form>
+    </div>
+</div>
 
 <script src="./scripts/script.js"></script>
 </body>

@@ -5,6 +5,7 @@ include_once 'config.php';
 include_once 'users.php';
 //header("Access-Control-Allow-Origin: *");
 
+//Kollar vilket request som kommer in, post/get
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 $body_data = json_decode(file_get_contents('php://input'),true);
 
@@ -21,19 +22,19 @@ switch($requestMethod) {
 		echo("kommer in i post REQ").PHP_EOL;
 		//var_dump($body_data);
 		//Data från användarinput från API 
-		$transaction_id = $body_data['transaction_id'];
+		//$transaction_id = $body_data['transaction_id'];
 		$from_account = $body_data['from_account'];
 		$to_account = $body_data['to_account'];
 		$to_amount = $body_data['to_amount'];
 		//Skriver ut data i felsökningssyfte
-		echo($transaction_id).PHP_EOL;
+		//echo($transaction_id).PHP_EOL;
 		echo($from_account).PHP_EOL;
 		echo($to_account).PHP_EOL;
 		echo($to_amount).PHP_EOL;
 
 		//Sätter värden från api med hjälp av metoder i klassen. 
 
-	    $transaction->setTransactionId($transaction_id);
+	    //$transaction->setTransactionId($transaction_id);
 	    $transaction->setFromAccount($from_account);
 		$transaction->setToAccount($to_account);
 		$transaction->setToAmount($to_amount);
@@ -42,8 +43,8 @@ switch($requestMethod) {
 
 		try{
 		//$transaction->getBalance($from_account);
-			if($transaction->createTransaction($transaction->getBalance($from_account), $to_amount)) {
-				echo 'Yeah';
+			if($transactionInfo = $transaction->createTransaction($transaction->getBalance($from_account), $to_amount)) {
+				echo ("Transction created");
 			}
 		}catch (Exception $e){
 			echo 'Message: ' . $e->getMessage();

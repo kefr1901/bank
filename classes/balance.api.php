@@ -1,6 +1,4 @@
-<?
-
-// TEASTAR MED POSTMAN ATT FÅ UT ID
+<?php
 // Header
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');

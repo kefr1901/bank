@@ -33,23 +33,9 @@
                     select.appendChild(option);
                     select1.appendChild(option1);
                     //balance.appendChild(p);
-                
-                    
                     
             }
-            //GET SEND FROM PERSON;
-           /* for(let i = 0; i < data.userInfo.length; i++){
-                let option = document.createElement("option");
-                option.setAttribute("value" , data.userInfo[i]["id"] );
-                option.setAttribute("id" , "from_account" );
-                option.innerText = data.userInfo[i]["firstName"];
-                option.setAttribute("name", data.userInfo[i]["id"] );
-                var select = document.getElementById("from_person");
-                console.log(option);
-
-                select.appendChild(option);
-        } */
-
+           
                 
         })
 

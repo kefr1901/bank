@@ -1,5 +1,7 @@
 # bankSystemet ska ha stöd för olika användare, säg 5-10 stycken. Ni behöver dock inte göra någon inloggning utan när man går in på sidan kan ni se till att ni redan är inloggade som en av era användare, typ som att ni har gått igenom en inloggning. Ni får lov att spara den aktuella användaren i en session eller liknande om det underlättar.
-[] Varje användare ska ha ett konto med en egen balans. Konton och användare ska ligga i olika tabeller i databasen. Ett konto får inte ha negativ balans, dvs saldot måste alltid vara minst 0.
+[X]Ett konto får inte ha negativ balans, dvs saldot måste alltid vara minst 0.
+
+[X] Varje användare ska ha ett kono med en egen balans. Konton och användare ska ligga i olika tabeller i databasen. 
 
 [X] Er inloggade användare ska kunna föra över pengar från sitt konto till en annan användares konto. Anävndartabellen behöver ha det data ni behöver för att kunna göra en överföring, t ex kontonummer, mobilnr (om ni har tänkt göra en Swish-överföring) eller liknande.
 

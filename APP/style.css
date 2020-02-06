@@ -1,0 +1,37 @@
+.body,html{
+    background-color:  rgb(180, 178, 178);
+}
+
+.container {
+    margin: auto;
+    width: 50%;
+    /*border: 1px solid rgb(0, 0, 0);*/
+    padding: 10px;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 100px;
+    border-radius: 30px;
+    background-color: rgb(95, 155, 190);
+    box-shadow: 5px 10px 45px;
+}
+
+.information{
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+button {
+    background-color:rgb(9, 34, 49); /* Green */
+    border: none;
+    color: white;
+    margin-top: 8px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+  }
+
+  

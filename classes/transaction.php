@@ -80,7 +80,7 @@ class Transaction
 		
 		$data = $stmt->fetchAll();
 
-        echo($data[0]["balance"]);
+        var_dump($data[0]["balance"]);
    		return $data[0]["balance"];
 
 	}	
