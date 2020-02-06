@@ -14,9 +14,12 @@
         <div class="information">
             <h2>WELCOME TO MONEY TRANSFER!</h2>
             <hr>
+            <div id="message">
+
+            </div>
 
 
-    <form action="" method="post" id="sendMoney">
+        <form action="" method="post" id="sendMoney">
         <h3>From account ID</h3><br>
         <select id="from_account"  class="select-css" required>
 

@@ -13,12 +13,12 @@ class Database{
     ];
     public $pdo;
 
-    public function __construct()
+    public function __construct($host, $port, $db, $user, $pass)
     {
-        $dsn = "mysql:host=$this->host;port=$this->port;dbname=$this->db;charset=$this->charset";
+        $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$this->charset";
 
         try {
-            $this->pdo = new PDO($dsn, $this->user, $this->pass, $this->options);
+            $this->pdo = new PDO($dsn, $user, $pass, $this->options);
            // echo ("connected");
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());

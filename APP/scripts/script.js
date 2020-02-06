@@ -4,7 +4,7 @@
 
 
 //API GET REQ TILL DATABASEN FÖR Att HÄMTA ALLA USERS
-    fetch("http://localhost/bank/classes/api.php")
+    fetch("http://localhost/bank/API/api.php")
         .then(res => res.json())
         .then(data => {
           console.log(data.userInfo);
@@ -42,17 +42,16 @@
 
 
 
-    document.getElementById("submit").addEventListener("click", (event) =>{
-    console.log("hello:O")
+    document.getElementById("sendMoney").addEventListener("click", (event) =>{
+      event.preventDefault();
+      event.stopPropagation();
+    //console.log("hello:O")
         if(event.target.id=="submit"){
 
        let from_account = document.getElementById('from_account').value;
-	   let to_account = document.getElementById("to_account").value;
+	      let to_account = document.getElementById("to_account").value;
        let to_amount = document.getElementById("to_amount").value;
      //  let balance_from_account = document.getElementById('from_account').getAttribute("name");
-
-       
-
        console.log(from_account);
        console.log(to_account);
        console.log(to_amount);
@@ -66,7 +65,7 @@
             
             }
         
-        fetch("http://localhost/bank/classes/api.php",{
+        fetch("http://localhost/bank/API/api.php",{
             method : "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -77,11 +76,12 @@
                     return response.json();
                  }) .then((myJson) => {
                 console.log(myJson);
+                document.getElementById("message").textContent=myJson.message;
                  });
   
                 }
 
-            });
+            });        
 
         
           

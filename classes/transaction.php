@@ -11,12 +11,10 @@ class Transaction
 	public $to_account;
 	public $to_amount;
 
-	public function __construct($db) {
+	public function __construct(Database $db) {
         $this->db = $db;
        
     }
-   
- 
     public function setTransactionId($transaction_id) {
         $this->transaction_id = $transaction_id;
     }
@@ -32,15 +30,9 @@ class Transaction
  
     // Skapa en transaktion POST
     public function createTransaction($balance, $amount) {
-		
-		/// JÄMFÖR BALANSEN
-		
+
 			$this->checkBalance($balance, $amount);
 
-
-		
-		echo("kommer in i createTransaction");
-		//echo($this->from_account);
 		try {
 			//echo("kommer in i try");
     		//$this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
@@ -62,25 +54,19 @@ class Transaction
 	    	//$stmt->execute($data);
 			//$status = $stmt->rowCount();
 			return $stmt->execute($data);
-			
  
 		} catch (Exception $e) {
     		die("Error in query!");
 		}
- 
-	
 	}
 	
 	public function getBalance($from_account){
-
 		//$sql = 'SELECT balance FROM bank.vw_users WHERE account_id = ' . $this->from_account;
 		$sql = 'SELECT balance FROM bank.vw_users WHERE account_id = ' . $from_account;
 		$stmt = $this->db->pdo->prepare($sql);
 		$stmt->execute();
-		
 		$data = $stmt->fetchAll();
 
-        var_dump($data[0]["balance"]);
    		return $data[0]["balance"];
 
 	}	
